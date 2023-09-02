@@ -7,7 +7,9 @@ public class PlayerLife : MonoBehaviour
 {
     private Rigidbody2D rb;
     private Animator anim;
-    
+
+    [SerializeField] private AudioSource collectionSoundEffect;
+
     private void Start()
     {
         rb   = GetComponent<Rigidbody2D>();
@@ -18,6 +20,7 @@ public class PlayerLife : MonoBehaviour
         if (collision.gameObject.CompareTag("Trap"))
         {
             Die();
+            collectionSoundEffect.Play();
         }
     }
     private void Die()
